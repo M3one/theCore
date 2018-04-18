@@ -70,7 +70,10 @@ extern "C" void platform_init()
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
     DWT->CYCCNT = 0;
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-
+    
+    //Set divide-by-cero and unaligned memory access
+    SCB->CCR |= 0x18;
+    
     // TODO: configurable FPU
     // TODO: check if FPU is really supported in toolchain, too
     SCB->CPACR |= (0xf << 20); // Enable FPU
