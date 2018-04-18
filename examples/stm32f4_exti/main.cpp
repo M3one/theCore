@@ -22,6 +22,65 @@ void board_init()
     gpio_init_generated();
 }
 
+//TODO: Add more information regarding the errors that provoke the faults
+
+extern "C" 
+void UsageFault_Handler(void)
+{
+    ecl::bypass_puts("Error: Usange Fault exception was occured");
+    for(;;);
+}
+
+extern "C" 
+void NMI_Handler()   
+{
+    ecl::bypass_puts("Error: NMI Fault exception was occured");
+    for(;;);
+}
+
+extern "C"
+void HardFault_Handler()
+{
+    ecl::bypass_puts("Error: Hard Fault exception was occured");
+    for(;;);
+}
+
+extern "C" 
+void MemManage_Handler()
+{
+    ecl::bypass_puts("Error: MemManage Fault exception was occured");
+    for(;;);
+}
+
+extern "C"
+void BusFault_Handler()
+{
+    ecl::bypass_puts("Error: BusFault Fault exception was occured");
+    for(;;);
+}
+
+extern "C" 
+void SVC_Handler()
+{
+    ecl::bypass_puts("Error: SVC Faultexception was occured");
+    for(;;);
+}
+
+extern "C" 
+void DebugMon_Handler()
+{
+    ecl::bypass_puts("Error: DebugMon Fault exception was occured");
+    for(;;);
+}
+
+extern "C" 
+void PendSV_Handler()
+{
+    ecl::bypass_puts("Error: PendSV Fault exception was occured");
+    for(;;);
+}
+
+
 void user_button_handler(void *ctx)
 {
     semaphore *s = reinterpret_cast<semaphore*>(ctx);
