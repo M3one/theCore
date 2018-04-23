@@ -71,6 +71,9 @@ extern "C" void platform_init()
     DWT->CYCCNT = 0;
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 
+    // Set divide-by-cero and unaligned memory access faults
+    SCB->CCR |= 0x18;
+    
     // TODO: configurable FPU
     // TODO: check if FPU is really supported in toolchain, too
     SCB->CPACR |= (0xf << 20); // Enable FPU
